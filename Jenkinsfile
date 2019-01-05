@@ -9,6 +9,6 @@ stage('complie-package') {
   bat "${mvnHome}/bin/mvn package"
 }
   } catch (err) {
-    emailext body: 'Jenkins build has been failed', compressLog: true, subject: 'Jenkins Build Failure', to: 'akshay.inlondon@gmail.com'
+    emailext body: 'Jenkins build has been failed', subject: 'Jenkins Build Failure', to: 'akshay.inlondon@gmail.com'
   }
 }
