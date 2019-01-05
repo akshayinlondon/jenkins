@@ -1,7 +1,7 @@
 node {
 
 stage('SCM checkout') {
-  git ''
+  git 'https://github.com/akshayinlondon/jenkins'
 }
 
 stage('complie-package') {
