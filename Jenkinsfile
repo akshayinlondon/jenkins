@@ -5,7 +5,8 @@ stage('SCM checkout') {
 }
 
 stage('complie-package') {
-  bat 'mvn clean install'
+  def mvnHome = tool name: 'mvn', type: 'maven'
+  bat "${mvnHome}/bin/mvn package"
 }
 
 }
