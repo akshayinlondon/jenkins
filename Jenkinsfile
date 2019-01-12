@@ -14,7 +14,16 @@ stage('complie-package') {
             withSonarQubeEnv('Sonar') {
                bat "${mvnHome}/bin/mvn sonar:sonar"
             }    
-    } 
+    }
+    
+    stage("Quality Gate"){
+          timeout(time: 1, unit: 'HOURS') {
+              def qg = waitForQualityGate()
+              if (qg.status != 'OK') {
+                  error "Pipeline aborted due to quality gate failure: ${qg.status}"
+              }
+          }
+      }        
     
   } catch (err) {
     emailext body: 'Jenkins build has been failed', subject: 'Jenkins Build Failure', to: 'akshay.inlondon@gmail.com'
