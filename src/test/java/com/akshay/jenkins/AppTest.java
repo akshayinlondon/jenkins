@@ -10,6 +10,6 @@ public class AppTest
 {
     public void testApp()
     {
-        assertEquals("Hello World!", App.sample());
+        assertEquals("Hello World", App.sample());
     }
 }
