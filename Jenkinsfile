@@ -26,6 +26,6 @@ stage('complie-package') {
       }        
     
   } catch (err) {
-    emailext body: 'Jenkins build has been failed', compressLog: true , subject: 'Jenkins Build Failure', to: 'akshay.inlondon@gmail.com'
+    emailext attachLog: true, body: 'Jenkins build has been failed', compressLog: true , subject: 'Jenkins Build Failure', to: 'akshay.inlondon@gmail.com'
   }
 }
