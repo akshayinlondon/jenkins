@@ -1,4 +1,4 @@
-node() {
+node('slave_node') {
   try {
 stage('SCM checkout') {
   git 'https://github.com/akshayinlondon/jenkins'
@@ -18,7 +18,7 @@ stage('complie-package') {
           timeout(time: 1, unit: 'HOURS') {
               def qg = waitForQualityGate()
               if (qg.status != 'OK') {
-                  emailext attachLog: true, body: 'Sonar Quality Gate has been failed', compressLog: true , subject: 'Jenkins Build Failure', to: 'akshay.inlondon@gmail.com'
+                 error "Pipeline aborted due to quality gate failure: ${qg.status}"
               }
           }
       }      
