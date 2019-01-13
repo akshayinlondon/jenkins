@@ -9,7 +9,7 @@ stage('complie-package') {
 }
     
      stage("SonarQube analysis") {
-            withSonarQubeEnv('Sonar') {
+            withSonarQubeEnv('sonarQube') {
                bat 'mvn sonar:sonar'
             }    
     }
