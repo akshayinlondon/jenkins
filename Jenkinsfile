@@ -5,7 +5,7 @@ stage('SCM checkout') {
 }
 
 stage('complie-package') {
-  bat 'mvn package'
+  sh 'mvn package'
 }
     
      stage("SonarQube analysis") {
